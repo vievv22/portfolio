@@ -24,118 +24,104 @@
 </head>
 <body>
 <div id="middle">
-	<br>
+   <br>
 
-	<h2>My Page</h2>
-	<div class="flex-container">
-		<div class="flex-item">
+   <h2>My Page</h2>
+   <div class="flex-container">
+      <div class="flex-item">
 
-			<br>
-			<div class="ponit-grade">
-				<c:choose>
+         <br>
+         <div class="ponit-grade">
+            <c:choose>
 
-					<c:when test="${userDetail.point < 400}">
-						<b>Friends</b>
-					</c:when>
-					<c:when test="${userDetail.point >= 400 && userDetail.point < 600}">
-						<b>Silver</b>
-					</c:when>
-					<c:when test="${userDetail.point >= 600 && userDetail.point < 800}">
-						<b>골드</b>
-					</c:when>
-					<c:otherwise>
-						<b>VIP</b>
-					</c:otherwise>
-				</c:choose>
-			</div>
-			<br> <span><b>${userDetail.name}</b></span><span> 님 반가워욧!</span>
-			<br> <br> <span>Point ${userDetail.point} 점</span> <br>
-
-
-
-
-
-			<div id="Lv">
-				<c:choose>
-					<c:when test="${userDetail.point < 100}">
-    Lv.1까지 <b>40,000원 남았어요!</b>
-					</c:when>
-					<c:when test="${userDetail.point >= 100 && userDetail.point < 200}">
-    Lv.1까지 <b>30,000원 남았어요!</b>
-					</c:when>
-					<c:when test="${userDetail.point >= 200 && userDetail.point < 300}">
-    Lv.1까지 <b>20,000원 남았어요!</b>
-					</c:when>
-					<c:when test="${userDetail.point >= 300 && userDetail.point < 400}">
-    Lv.1까지 <b>10,000원 남았어요!</b>
-					</c:when>
-					<c:when test="${userDetail.point >= 400 && userDetail.point < 500}">
-    Lv.2까지 <b>20,000원 남았어요!</b>
-					</c:when>
-					<c:when test="${userDetail.point >= 500 && userDetail.point < 600}">
-    Lv.2까지 <b>10,000원 남았어요!</b>
-					</c:when>
-					<c:when test="${userDetail.point >= 600 && userDetail.point < 700}">
-    Lv.2까지 <b>10,000원 남았어요!</b>
-					</c:when>
-					<c:when test="${userDetail.point >= 700 && userDetail.point < 800}">
-    Lv.2까지 <b>10,000원 남았어요!</b>
-					</c:when>
-					<c:otherwise>
-						<b>VIP님 환영합니다!</b>
-					</c:otherwise>
-				</c:choose>
-
-			</div>
-			<br> <br>
-			<div class="grade-container">
-				<div class="grade">Friends</div>
-				<div class="grade">
-					<b>Lv.1</b>
-				</div>
-				<div class="grade">
-					<b>Lv.2</b>
-				</div>
-				<div class="grade">
-					<b>Lv.3</b>
-				</div>
-			</div>
-			<br>
-			<div class="line"></div>
-			<br>
-			<div class="grade-container">
-				<div class="grade">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-				<div class="grade">4만원</div>
-				<div class="grade">6만원</div>
-				<div class="grade">8만원</div>
-			</div>
-
-		</div>
+               <c:when test="${userDetail.point < 400}">
+                  <b>Friends</b>
+               </c:when>
+               <c:when test="${userDetail.point >= 400 && userDetail.point < 600}">
+                  <b>Silver</b>
+               </c:when>
+               <c:when test="${userDetail.point >= 600 && userDetail.point < 800}">
+                  <b>Gold</b>
+               </c:when>
+               <c:otherwise>
+                  <b>VIP</b>
+               </c:otherwise>
+            </c:choose>
+         </div>
+         <br> <span><b>${userDetail.name}</b></span><span> 님 반가워요!</span>
+         <br> <br> <span>Point : ${userDetail.point} 점</span> <br>
 
 
 
 
-	<div class="flex-item-right">
-		<br>
-		<div class="botton-container">
-			<div class="my-botton ">
-				<button type="button" onclick="location.href='reviewList2?userId=${userDetail.id}'">리 뷰</button>
 
-			</div>
-			<div class="my-botton ">
-				<button type="button" onclick="location.href='qna_list'">문의</button>
-			</div>
-			<div class="my-botton ">
-				<button type="button" onclick="location.href='memberInfo'">회원정보</button>
-			</div>
-		</div>
+         <div id="Lv">
+            <c:choose>
+               <c:when test="${userDetail.point < 400}">
+    Lv.1까지 <b>${40000 - userDetail.point * 100}원 남았어요!</b>
+               </c:when>
+
+               <c:when test="${userDetail.point >= 400 && userDetail.point < 600}">
+    Lv.2까지 <b>${60000 - userDetail.point * 100}원 남았어요!</b>
+               </c:when>
+
+               <c:when test="${userDetail.point >= 600 && userDetail.point < 800}">
+    vip까지 <b>${80000 - userDetail.point * 100}원 남았어요!</b>
+               </c:when>
+               <c:otherwise>
+                  <b>VIP님 환영합니다!</b>
+               </c:otherwise>
+            </c:choose>
+
+         </div>
+         <br> <br>
+         <div class="grade-container">
+            <div class="grade">Friends</div>
+            <div class="grade">
+               <b>Lv.1</b>
+            </div>
+            <div class="grade">
+               <b>Lv.2</b>
+            </div>
+            <div class="grade">
+               <b>VIP</b>
+            </div>
+         </div>
+         <br>
+         <div class="line"></div>
+         <br>
+         <div class="grade-container">
+            <div class="grade">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            <div class="grade">4만원</div>
+            <div class="grade">6만원</div>
+            <div class="grade">8만원</div>
+         </div>
+
+      </div>
+
+
+
+
+   <div class="flex-item-right">
+      <br>
+      <div class="botton-container">
+         <div class="my-botton ">
+            <button type="button" onclick="location.href='reviewList2?userId=${userDetail.id}'">리 뷰</button>
+         </div>
+         <div class="my-botton ">
+            <button type="button" onclick="location.href='qna_list'">문의</button>
+         </div>
+         <div class="my-botton ">
+            <button type="button" onclick="location.href='memberInfo'">회원정보</button>
+         </div>
+      </div>
 <img alt="광고이미지" src="https://www.lottecinema.co.kr/NLCHS/Content/images/member/my_club_315_bravo_230301.jpg">
-	</div>
-	</div>
-	
-<br>
-	<br>
-	<br>
+   </div>
+   </div>
+
+   <br>
+   <br>
+   <br>
 	<h3>리뷰 내역</h3>
 
 	<c:if test="${empty reviewList2}">
