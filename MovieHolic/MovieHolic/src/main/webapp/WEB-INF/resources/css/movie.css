@@ -1,0 +1,224 @@
+@charset "UTF-8";
+<!-- m_list -->
+ .center {
+ 	text-align:center;
+ }
+ .movie-card {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .movie-image {
+    width: 280px;
+   	height: 410px;
+    object-fit: cover;
+    margin: 0 10px;
+    border-radius: 20px;
+  }
+  
+    .movie-image2 {
+    width: 280px;
+   	height: 410px;
+    object-fit: cover;
+  }
+  
+  .movie-title {
+    font-size: 18px; 
+    font-weight: bold;
+    margin-bottom: 50px;
+    color: #424242;
+  }
+  
+  .number-badge {
+		font-size: 18px;
+		font-weight: bold;
+	}
+	
+	
+.h2 {
+	color: #424242;
+	font-size: 30px;
+	font-weight: bold; 
+}
+
+  /* 포스터에 마우스 올리면 */
+.movie-image:hover {
+  transform: translateY(-15px);
+  transition: transform 1s;
+  box-sizing: border-box;
+  /* border: 8px solid royalblue; */
+  z-index: 2;
+  filter: drop-shadow(0 0 2rem #757575);
+}
+
+.bar {
+  height: 25px;
+  background-color: #503396;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  flex-direction: row; /* 수평 방향으로 정렬 */
+  align-items: center; /* 수직 방향으로 가운데 정렬 */
+  justify-content: space-between; /* 수평 방향으로 아이템 간격을 동일하게 정렬 */
+  padding-left: 400px; /* 왼쪽 여백 추가 */
+}
+
+<!-- m_detail -->
+
+<title>Insert title here</title>
+<style>
+.review-toggle {
+	color: #503396;
+	cursor: pointer;
+	margin-left: 200px
+}
+
+.star-rating span.star {
+	font-size: 2em;
+	display: inline-block;
+	position: relative;
+	color: #FAD103;
+}
+
+.star-rating span.star::before {
+	content: '\2605';
+	position: absolute;
+	opacity: 0;
+	transition: opacity 0.25s ease-in-out;
+	color: inherit;
+}
+
+.star-rating input[type="radio"] {
+	display: none;
+}
+
+.star-rating input[type="radio"]:checked ~ span.star::before {
+	opacity: 1;
+}
+
+.m_info {
+	margin-left: 200px;
+	margin-right: 200px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.m_info .poster-image {
+	width: 280px;
+	height: 410px;
+	margin-right: 80px;
+	object-fit: cover;
+}
+
+.m_info .info-table {
+	flex: 1;
+}
+
+.main-view {
+	position: relative;
+	width: 950px;
+	height: 580px;
+	background-color: black;
+	overflow: hidden;
+	margin-left: 200px;
+}
+
+.slideshow {
+	position: relative;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.slideshow li {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 950px;
+	height: 580px;
+	display: none;
+}
+
+.slideshow li img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.prev-button,
+.next-button {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 40px;
+	height: 40px;
+	background-color: rgba(255, 255, 255, 0.5);
+	color: black;
+	font-size: 24px;
+	border: none;
+	cursor: pointer;
+	opacity: 0.5;
+}
+
+.prev-button {
+	left: 10px;
+}
+
+.next-button {
+	right: 10px;
+}
+
+.bar {
+	height: 25px;
+	background-color: #503396;
+	color: #fff;
+	padding: 10px;
+	display: flex;
+	flex-direction: row;
+	/* 수평 방향으로 정렬 */
+	align-items: center;
+	/* 수직 방향으로 가운데 정렬 */
+	justify-content: space-between;
+	/* 수평 방향으로 아이템 간격을 동일하게 정렬 */
+	padding-left: 400px;
+	/* 왼쪽 여백 추가 */
+}
+
+#moviedetail {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+}
+
+#moviedetail .movie-image2 {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: 0.7;
+}
+
+#moviedetail .overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	opacity: 0.7;
+}
+
+#moviedetail .content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+}

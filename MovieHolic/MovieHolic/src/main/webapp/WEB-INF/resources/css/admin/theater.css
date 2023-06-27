@@ -1,0 +1,321 @@
+@charset "UTF-8";
+
+<!--
+theaterList -->.theater-container {
+	overflow: auto;
+	max-height: 300px;
+}
+
+.theater-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-family: Arial, sans-serif;
+	overflow: hidden;
+}
+
+.theater-table th {
+	background-color: #f2f2f2;
+	padding: 12px;
+	text-align: center;
+	font-size: 18px;
+}
+
+.theater-table td {
+	padding: 12px;
+	font-size: 16px;
+	border-bottom: 1px solid #ddd;
+	text-align: center;
+	transition: background-color 0.3s ease;
+}
+
+.theater-table tbody tr:hover {
+	background-color: #f9f9f9;
+}
+
+.theater-table td a {
+	color: #333;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.theater-table td a:hover {
+	color: #555;
+}
+
+.theater-table td.active {
+	background-color: #ccc;
+}
+
+.theater-link {
+	display: inline-block;
+	padding: 10px 16px;
+	background-color: #f2f2f2;
+	border-radius: 4px;
+	font-family: "Your Preferred Font", Arial, sans-serif;
+	font-size: 16px;
+	text-decoration: none;
+	color: #333;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.theater-link:hover {
+	background-color: #ccc;
+	color: #555;
+}
+
+<!--
+theaterDetail -->body {
+	font-family: Arial, sans-serif;
+	background-color: #f0f0f0;
+	margin: 0;
+}
+
+h1 {
+	text-align: center;
+}
+/* theater.css 파일에 추가되는 스타일 */
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+	padding-bottom: 20px;
+	padding-top: 20px;
+}
+
+.div-container {
+	padding: 20px;
+	text-align: center;
+}
+
+.div-container-local {
+	background-color: #f0f0f0;
+	border-radius: 5px 0 0 5px;
+	border-right: 1px solid #ccc;
+	cursor: pointer;
+}
+
+.div-container-theater {
+	background-color: #e0e0e0;
+	border-radius: 0 5px 5px 0;
+	cursor: pointer;
+}
+
+.div-container-local p, .div-container-theater p {
+	margin: 0;
+	padding: 10px;
+	transition: background-color 0.3s;
+}
+
+.div-container-local p:hover, .div-container-theater p:hover {
+	background-color: #ccc;
+}
+
+.table-container {
+	width: 100%;
+	padding: 20px;
+}
+
+.detail-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.detail-table tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+.detail-table td {
+	padding: 10px;
+	border: 1px solid #ddd;
+	text-align: center;
+	width: 25%; /* 각 td의 너비를 25%로 설정 */
+}
+
+.detail-table td:first-child {
+	font-weight: bold;
+}
+
+.detail-table td:nth-child(odd) {
+	text-align: right;
+}
+
+.detail-table td.placeholder {
+	color: #999;
+	font-style: italic;
+}
+
+.close-btn {
+	display: block;
+	margin: 0 auto;
+	padding: 10px 20px;
+	border: none;
+	background-color: #e0e0e0;
+	color: #000;
+	font-weight: bold;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	
+}
+
+.close-btn:hover {
+	background-color: red;
+	color: white;
+}
+
+#room-container {
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+	padding: 20px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+th, td {
+	padding: 10px;
+	text-align: left;
+	border-bottom: 1px solid #ccc;
+}
+
+th {
+	background-color: #f0f0f0;
+}
+
+/* 추가 스타일 */
+#local p, #theater p {
+	margin-bottom: 10px;
+}
+
+.theater-name {
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.theater-name:hover {
+	background-color: #ccc;
+}
+
+.theater-name.active {
+	background-color: #f0f0f0;
+}
+
+#room-container {
+	display: none;
+}
+
+#room-container table {
+	margin-top: 0;
+}
+
+#room-container p {
+	margin: 0;
+	text-align: center;
+	padding: 10px;
+}
+
+#local, #theater {
+	height: 200px;
+	overflow: auto;
+}
+
+<!-
+theaterInsert -->body {
+	font-family: Arial, sans-serif;
+	background-color: #f2f2f2;
+}
+
+form {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #ffffff;
+	border: 1px solid #cccccc;
+	border-radius: 5px;
+}
+
+h1 {
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.theater-form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.section {
+	margin-bottom: 20px;
+	padding: 10px;
+	border: 1px solid #ccc;
+}
+
+.legend {
+	font-weight: bold;
+}
+
+.section label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.section input[type="text"], .section input[type="number"] {
+	width: 100%;
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+.section input[type="button"], .section button {
+	padding: 5px 10px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.submit-button {
+	padding: 5px 10px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	align-self: flex-end;
+}
+
+/* Add room button styles */
+.add-room-button {
+	margin-top: 10px;
+}
+
+/* Delete button styles */
+.delete-button {
+	padding: 3px 8px;
+	background-color: #dc3545;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+/* Warning message styles */
+.warning-message {
+	display: none;
+	color: red;
+}
+
+/* Name status styles */
+.name-status {
+	margin-top: 10px;
+}

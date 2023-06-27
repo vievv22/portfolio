@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+<!-- theaterInfo -->
+
+
+    .table-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: auto; /* 스크롤바를 추가하기 위한 overflow 속성 */
+    }
+
+    .div-container-local{
+    	text-align: center;
+        width: 200px;
+        height:385px;
+        padding-top:15px;
+        border-left: 1px solid #E2E2E2;
+        border-top: 1px solid #E2E2E2;
+    }
+    
+    .div-container-theater{
+    	text-align: center;
+		width: 200px;
+		height:385px;
+        padding-top:15px;
+        border-left: 1px solid #E2E2E2;
+        border-top: 1px solid #E2E2E2;
+    }
+    
+    .table-container {
+    	width: 600px;
+    	height: 385px;
+        padding-top:15px;
+        border-left: 1px solid #E2E2E2;
+    	border-right: 1px solid #E2E2E2;
+   	 border-top: 1px solid #E2E2E2;
+    }
+
+   /* 테이블 스타일 수정 */
+    .theater-table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+     .theater-table tr {
+     	height:63px;
+    }
+    
+    .theater-table td {
+        padding: 10px;
+        border-bottom: 1px solid #E2E2E2;
+    }
+    
+    .theater-table tr:last-child td {
+        border-bottom: none;
+    }
+    
+    .theater-table td:first-child {
+        width: 30%;
+        font-weight: bold;
+    }
+    
+    /* 주소 셀의 텍스트 줄바꿈 */
+    #table-container tr:nth-child(5) td:nth-child(2) {
+        white-space: normal;
+        word-wrap: break-word;
+    }
+    
+    #update-table-container {
+    	    display: flex;
+		    justify-content: center;
+		    align-items: center;
+    }
+    #update-table-container > table {
+    	width: 700px;
+    	height: 300px;
+    }
+    
+.bar {
+  height: 25px;
+  background-color: #503396;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  flex-direction: row; /* 수평 방향으로 정렬 */
+  align-items: center;
+  justify-content: center; /* 수평 방향으로 중앙 정렬 */
+}
+
+.bar > * {
+  transform: translateX(-450px);
+}
+
+   .middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.middle .container {
+     display: flex;
+     flex-direction: row;
+     margin: 20px auto;
+     width: 1000px;
+     height: 450px;
+     border-top: 1px solid black;
+     border-bottom: 1px solid black;
+ }
+ 
+ .placeholder {
+	color: #999;
+	font-family: Arial, sans-serif;
+	font-style: italic;
+}
+ 

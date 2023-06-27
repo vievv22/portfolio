@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="QnaMapper">
+
+	<!-- 회원별 QnA 목록 조회 -->
+	<select id="listQna" resultType="qna">
+		select * from qna where user_id=#{user_id} order by numb desc
+	</select>
+	
+
+	<!-- QnA 상세 조회 -->
+	<select id="getQna" resultType="qna">
+		SELECT * FROM qna where numb=#{numb}
+	</select>
+
+
+	<!-- QnA 글 올리기 -->
+	<insert id ="insertQna">
+		INSERT INTO qna(numb, title, content, user_id)
+		values (qna_seq.NEXTVAL, #{title}, #{content}, #{user_id})
+	</insert>
+
+
+	<!-- QnA 삭제 -->
+	<select id="deleteQna">
+		delete FROM qna where numb=#{numb}
+	</select>
+
+
+	<!-- QnA 리스트 조회(관리자페이지) -->
+	<select id="listAllQna" resultType="qna">
+		SELECT * FROM qna order by numb desc
+	</select>
+	
+	<!-- QnA 관리자 답변 저장 -->
+	<update id="updateQna">
+		UPDATE qna SET reply=#{reply}, repyn='y' WHERE numb=#{numb}
+	</update>
+
+
+	
+	
+	<!-- 총 QnA 목록의 개수 조회 -->
+	<select id="countQnaList" parameterType="String" resultType="int">
+		select count(*) from qna where title like '%'||#{name}||'%'
+	</select>
+	
+	<!-- QnA 목록 조회 -->
+	<select id="QnaList" parameterType="String" resultType="qna">
+		SELECT *
+		FROM qna WHERE title LIKE '%'||#{name}||'%'
+		ORDER BY regdate desc
+	</select>
+	
+	
+	
+
+	<!-- 페이지별 QnA 목록 조회  관리자용 -->
+	<select id="listQnaWithPaging" parameterType="hashMap" resultType="qna">
+	    <![CDATA[
+	    select rn, numb, title, content, reply, repyn, regdate, user_id from 
+		    (select row_number() over (order by numb DESC) rn, numb, title, content, reply, repyn, regdate, user_id from qna 
+		    where title like '%'||#{name}||'%')
+			    where rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
+			    and rn <= (#{criteria.pageNum} * #{criteria.rowsPerPage})
+			
+	    ]]>
+	</select>
+
+
+
+
+
+	<!-- ======================개인 qna 조회============================ -->
+	
+	<!-- 총 QnA 목록의 개수 조회 -->
+	<select id="countQnaListUser" parameterType="hashMap" resultType="int">
+    <![CDATA[
+	    select count(*) from qna where title like '%'||#{name}||'%' AND user_id = #{userId}
+	    ]]>
+	</select>
+	
+	<select id="QnaListUser" parameterType="hashMap" resultType="qna">
+    <![CDATA[
+	    SELECT *
+	    FROM qna WHERE title LIKE '%'||#{name}||'%' AND user_id = #{userId}
+	    ORDER BY regdate desc
+	    ]]>
+	</select>
+	
+		
+
+	<!-- 페이지별 QnA 목록 조회 -->
+	<select id="listQnaWithPagingUser" parameterType="hashMap" resultType="qna">
+	  <![CDATA[
+	    select rn, numb, title, content, reply, repyn, regdate, user_id from 
+	        (select row_number() over (order by numb DESC) rn, numb, title, content, reply, repyn, regdate, user_id from qna 
+	        where title like '%'||#{name}||'%' AND user_id = #{userId}) 
+	        where rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
+	        and rn <= (#{criteria.pageNum} * #{criteria.rowsPerPage})
+	    ]]>
+</select>
+
+
+
+	<!-- 관리자 대시보드: 답변달지 않은 총 qna 수 조회 -->
+	<select id="getTotalQnaCount" resultType="qna">
+		SELECT COUNT(*) totalQna
+		FROM qna
+		WHERE reply IS NULL
+	</select>
+</mapper>

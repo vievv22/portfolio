@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+<!--
+--> /* 전체 페이지 스타일 */
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.loginh1 {
+	font-weight: bold;
+	margin: 0;
+}
+
+
+.form-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
+
+.sign-in-container {
+	left: 0;
+	width: 50%;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+button {
+	border-radius: 20px;
+	border: 1px solid #503396;
+	background-color: #503396;
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto;
+}
+
+input {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 200px;
+}
+
+hr {
+	height: 1px;
+	background-color: #ccc;
+	border: none;
+	margin: 10px 0;
+	width: 100%;
+}
+
+.findPwdResult {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+}

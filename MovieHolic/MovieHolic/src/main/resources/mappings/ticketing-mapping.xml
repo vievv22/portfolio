@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="TicketingMapper">
+	<!-- 작성자: 허장욱 -->
+	<!-- 사용자 -->
+	<!-- 사용자 예매 목록 출력 -->
+	<insert id="insertTicketing">
+		INSERT INTO ticketing 
+		VALUES(ticketing_seq.NEXTVAL, #{p_num}, #{price}, #{seat_name},
+		sysdate, 'n', #{user_id}, #{schedule_numb}, #{movie_numb})
+	</insert>
+	
+	<select id="getTicketingListById" resultType="ticketing">
+	<![CDATA[
+	SELECT numb, movie_title, th_name, r_numb, start_day, movie_numb
+		    , start_time
+		    ,p_num,seat_name,price, regdate
+		    , poster_url, age, cancelyn
+		    , user_id FROM(
+		SELECT row_number() OVER (ORDER BY t.numb DESC) rn, t.numb, m.title movie_title, th.name th_name, r.numb r_numb, s.s_day start_day
+		    , start_time
+		    , t.p_num, t.seat_name, t.price, t.regdate
+		    , m.poster_url, m.age, cancelyn
+		    , t.user_id
+		    , t.movie_numb
+		    FROM ticketing t
+		    JOIN schedule s ON t.schedule_numb = s.numb
+		    JOIN movie m ON m.numb = t.movie_numb
+		    JOIN theater th ON th.numb = s.theater_numb
+		    JOIN room r ON r.id = s.room_numb
+		    where user_id=#{user_id}
+	    ) WHERE rn > (#{criteria.pageNum} - 1) * #{criteria.rowsPerPage}
+	      AND rn <= (#{criteria.pageNum} * #{criteria.rowsPerPage})
+	]]>
+	</select>
+	
+	<!-- 사용자 예매내역 페이징 처리를 위해 카운트 -->
+	<select id="countTicketingList" resultType="int">
+		SELECT count(*) FROM ticketing t
+		    JOIN schedule s ON t.schedule_numb = s.numb
+		    JOIN movie m ON m.numb = t.movie_numb
+		    JOIN theater th ON th.numb = s.theater_numb
+		    JOIN room r ON r.id = s.room_numb
+		    where user_id=#{user_id}
+	</select>
+	
+	<!-- 사용자 예매 상세내용 출력 -->
+	<select id="getTicketingDetail" resultType="ticketing">
+		SELECT * 
+		FROM user_ticketing_list
+		WHERE numb=#{numb}
+		AND user_id=#{user_id}
+	</select>
+	
+	<!-- 예매취소 기능 처리 -->
+	<update id="cancelTicketing">
+		UPDATE ticketing SET cancelyn='y' 
+		WHERE numb=#{numb} 	
+	</update>
+	
+	<!-- 관리자 -->
+	<!-- 모든 사용자 예매 목록 출력 -->
+	<select id="getAllTicketingList" parameterType="hashMap" resultType="ticketing">
+	<![CDATA[
+	select * from (
+	    select row_number() OVER (ORDER BY numb desc) rn, numb, user_id, th_name, r_numb, movie_title
+			    , start_day, start_time, end_time,
+			      p_num, price, regdate, cancelyn FROM (
+			SELECT distinct t.numb, t.user_id, th.name th_name, r.numb r_numb, m.title movie_title
+			    , s.s_day start_day, start_time, end_time,
+			      t.p_num, t.price, t.regdate, t.cancelyn
+			    FROM ticketing t
+			        JOIN schedule s ON t.schedule_numb = s.numb
+			        JOIN theater th ON s.theater_numb = th.numb
+			        JOIN room r ON s.room_numb = r.id
+			        JOIN movie m ON t.movie_numb = m.numb
+			        WHERE user_id LIKE '%'||#{id}||'%'
+			        ))
+			WHERE rn > (#{criteria.pageNum} - 1) * #{criteria.rowsPerPage}
+		      AND rn <= (#{criteria.pageNum} * #{criteria.rowsPerPage})
+	]]>
+	</select>
+	
+	<!-- 모든 사용자 예매 목록 카운트(페이징 처리) -->
+	<select id="getAllcountTicketingList" resultType="int">
+		SELECT count(*) 
+		FROM ticketing_list
+		WHERE user_id LIKE '%'||#{id}||'%' 
+	</select>
+	
+	<!-- 작성자: 양리나 -->
+    <select id="getTicketingSummary" resultType="ticketing">
+        SELECT schedule_numb, SUM(p_num) AS total_p_num
+        FROM ticketing
+        WHERE schedule_numb=#{schedule_numb}
+        GROUP BY schedule_numb
+    </select>
+    
+    <select id="getAlreadySeatList" resultType="ticketing">
+   		SELECT seat_name FROM ticketing WHERE schedule_numb=#{schedule_numb}
+    </select>
+    
+    
+    <!-- 관리자 대시보드: 결제 금액 합산, 예매 건수 -->
+    <select id="getTotalCount" resultType="ticketing">
+    	SELECT SUM(price) totalPrice, count(*) totalTicketing
+		FROM ticketing 
+		WHERE cancelyn='n'
+    </select>
+    
+    <!-- 관리자 대시보드: 영화 예매 차트 생성 -->
+    <select id="getTicketingCountByMovie" resultType="ticketing">
+		SELECT title movie_title, count(title) movie_count
+		FROM ticketing t
+			JOIN movie m ON m.numb = t.movie_numb
+			JOIN schedule s ON t.schedule_numb = s.numb
+				WHERE cancelyn='n'
+				AND TO_CHAR(s.s_day, 'MM') = TO_CHAR(sysdate, 'MM')
+				GROUP BY title
+    </select>
+    
+    <!-- 관리자 대시보드: 월별 결제합계 -->
+    <select id="getTotalPriceByMonth" resultType="ticketing">
+		SELECT TO_CHAR(regdate, 'MM') AS month, SUM(price) AS totalPrice
+		FROM ticketing
+		WHERE TO_CHAR(regdate, 'MM') = #{month}
+		AND cancelyn='n'
+		GROUP BY TO_CHAR(regdate, 'MM')
+		ORDER BY TO_CHAR(regdate, 'MM')
+    </select>
+</mapper>

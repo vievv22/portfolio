@@ -1,0 +1,152 @@
+@charset "UTF-8";
+
+<!-- r_list -->
+.star-rating span.star::before {
+	content: '\2605';
+	position: absolute;
+	opacity: 0;
+	transition: opacity 0.25s ease-in-out;
+	color: inherit;
+}
+
+
+#middle {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 50px;
+
+}
+
+.table {
+	
+}
+
+.flex-container {
+	display: flex;
+	border: 0px solid #000;
+	border-radius: 10px;
+	height: 330px;
+	flex-wrap: nowrap; /* 수정: nowrap으로 설정 */
+	justify-content: space-between;
+	/* 외부 그림자 */
+	box-shadow: 2px 2px 4px 5px gray;
+}
+
+.flex-item-right {
+	flex: 1;
+	border-left: 1px solid #E2E2E2;
+	padding: 10px;
+	width: 500px;
+	text-align: center;
+}
+
+.flex-item {
+	flex: 1;
+	padding: 10px;
+	width: 500px;
+}
+
+button {
+	width: 100px;
+	height: 50px;
+	background-color: #ffffff;
+	color: #000000;
+	border: none;
+	text-align: center;
+	line-height: 50px;
+	font-size: 15px;
+	font-weight: bold;
+	cursor: pointer;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.botton-container {
+	display: flex;
+	justify-content: center;
+	height: 100px;
+	flex-wrap: nowrap; /* 수정: nowrap으로 설정 */
+
+}
+
+.my-botton {
+	width: 120px;
+	text-align: center;
+	height: 50px;
+	background-color: #ffffff;
+	color: #000;
+	border: 1px solid #A8A8A8;
+	border-radius: 8px;
+	margin:10px;
+}
+
+.grade-container {
+	display: flex;
+	flex-wrap: nowrap; /* 수정: nowrap으로 설정 */
+	justify-content: space-between;
+}
+
+.grade {
+	font-size: 14px;
+}
+
+.line {
+	border-bottom: 1px solid #A8A8A8;
+}
+
+#Lv {
+	font-size: 20px;
+	text-align: center;
+}
+
+.container {
+	box-shadow: 2px 2px 4px 5px gray;
+	text-align: center;
+	border: 0px solid #000;
+	border-radius: 10px;
+	    text-decoration: none;
+}
+
+
+
+  .container tr:first-child {
+    background-color: #f2f2f2; /* 첫 번째 행 배경색 */
+  }
+
+
+.font {
+	font-weight: bold;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+  .font a {
+    text-decoration: none; /* 링크의 밑줄 제거 */
+  }
+
+.container tr td a{
+ color: #503396;
+ font-weight: bold;
+ text-decoration: none;
+}
+.ponit-grade {
+	border-radius: 5px; background-color : #503396;
+	color: white;
+	width: 70px;
+	text-align: center;
+	background-color: #503396;
+}
+
+.bar {
+  height: 25px;
+  background-color: #503396;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  flex-direction: row; /* 수평 방향으로 정렬 */
+  align-items: center;
+  justify-content: center; /* 수평 방향으로 중앙 정렬 */
+}
+
+.bar > * {
+  transform: translateX(-450px);
+}

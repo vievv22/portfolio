@@ -1,0 +1,447 @@
+@charset "UTF-8";
+
+<!--
+ticketing --> /* Remove bullet points from list items */
+   /* Add the following styles for schedule items */ .schedule-item {
+   border: 2px solid #B2B2B2;
+   border-radius: 8px;
+}
+
+.schedule-item.selected-schedule {
+   border-color: #f00;
+}
+
+.schedule-group {
+/*    display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between; */
+    display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+}
+
+.schedule-item {
+   width: 150px;
+   flex: 0 0 48%;
+   cursor: pointer;
+   padding: 8px;
+   margin-bottom: 15px;
+}
+
+.scrollable-list {
+   overflow-y: auto;
+   max-height: 400px;
+   flex: 1;
+   width: 180px;
+   border-top: 1px solid #E2E2E2;
+}
+
+.scrollable-list2 {
+   overflow-y: auto;
+   max-height: 400px;
+   flex: 1;
+   width: 250px;
+   border-top: 1px solid #E2E2E2;
+}
+
+.scrollable-list3 {
+   overflow-y: auto;
+   max-height: 300px;
+   flex: 1;
+   width: 400px;
+}
+
+.scrollable-list4 {
+   overflow-y: auto;
+   max-height: 300px;
+   flex: 1;
+   width: 400px;
+   border-top: 1px solid #E2E2E2;
+   text-align: center;
+}
+
+.flex-container {
+   display: flex;
+   border-top: 1px solid #000;
+   border-bottom: 1px solid #000;
+   height: 500px;
+}
+
+.flex-item-left {
+   flex: 1;
+   border-left: 1px solid #E2E2E2;
+   padding: 10px;
+   width: 100px;
+}
+
+.flex-item-center {
+   flex: 1;
+   border-left: 1px solid #E2E2E2;
+   padding: 10px;
+   width: 250px;
+}
+
+.flex-item-right {
+   flex: 1;
+   border-left: 1px solid #E2E2E2;
+   border-right: 1px solid #E2E2E2;
+   padding: 10px;
+   width: 500px;
+}
+
+.calendar-row {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-bottom: 10px;
+}
+
+.calendar-item {
+   padding: 10px;
+   margin: 0 5px;
+   border: 1px solid #ccc;
+   cursor: pointer;
+}
+
+.selected {
+   background-color: #ddd;
+}
+
+.disabled {
+   pointer-events: none;
+   color: #ccc;
+}
+
+/* Location */
+.selected-location {
+   background-color: #cfd8dc;
+}
+
+/* Theater */
+.selected-theater {
+   background-color: #b0bec5;
+}
+
+/* Movie */
+.selected-movie {
+   background-color: #90a4ae;
+}
+
+.bar {
+  height: 25px;
+  background-color: #503396;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  flex-direction: row; /* 수평 방향으로 정렬 */
+  align-items: center;
+  justify-content: center; /* 수평 방향으로 중앙 정렬 */
+}
+
+.bar > * {
+  transform: translateX(-450px);
+}
+
+.align {
+   text-align: center;
+}
+
+<!--
+ticketingInfo -->.button-container, .center {
+   text-align: center;
+}
+
+.seat-name {
+   display: inline-block;
+   width: 8px;
+   height: 8px;
+   margin-right: 6px;
+   padding: 4px;
+   border-radius: 3px;
+   background-color: #503396;
+   font-size: 0px;
+}
+
+.reserved-seat {
+   display: inline-block;
+   width: 8px;
+   height: 8px;
+   margin-right: 6px;
+   padding: 4px;
+   border-radius: 3px;
+   background-color: #999999;
+   font-size: 0px;
+}
+
+.button-container {
+   text-align: center;
+   margin-top: 20px;
+}
+
+.custom-button {
+   display: inline-block;
+   padding: 10px 20px;
+   background-color: #503396;
+   color: white;
+   border: none;
+   border-radius: 15px;
+   text-align: center;
+   text-decoration: none;
+   font-size: 16px;
+   cursor: pointer;
+   transition: background-color 0.3s;
+   margin-right: 10px;
+}
+
+.custom-button:hover {
+   background-color: #452d7a;
+}
+
+.custom-button:active {
+   background-color: #3e296c;
+}
+
+<!--
+seat-->.seat {
+   width: 30px;
+   height: 30px;
+   border: 1px solid #ccc;
+   display: inline-block;
+   margin: 5px;
+   cursor: pointer; /* 커서를 포인터로 변경 */
+}
+
+.selected {
+   background-color: #503396; /* 선택된 좌석의 배경색을 파란색으로 변경 */
+   color: white; /* 선택된 좌석의 텍스트 색상을 흰색으로 변경 */
+}
+
+.gap {
+   visibility: hidden; /* 공백 요소를 숨김 */
+   width: 30px;
+   height: 30px;
+   display: inline-block;
+   margin: 5px;
+}
+
+.screen {
+   width: 650px;
+   height: 80px;
+   background-color: #ccc;
+}
+
+<!-- ticketingChoice -->
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap")
+   ;
+
+@media screen and (max-width: 768px) {
+   /* 화면의 가로 크기가 768px 이하일 때 적용될 스타일을 작성합니다. */
+}
+.body2{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   height: 100vh;
+   font-family: "Lato", sans-serif;
+}
+
+.movie-container {
+   min-width: 550px;
+   margin-top: 50px;
+   display: flex;
+}
+
+.movie-container label {
+   display: flex;
+   justify-content: left;
+   align-content: center;
+   padding-top: 10px;
+}
+
+.movie-container select {
+   background-color: #fff;
+   border: 0;
+   border-radius: 5px;
+   font-size: 14px;
+   margin-left: 10px;
+   padding: 5px 15px 5px 15px;
+   -moz-appearance: none;
+   -webkit-appearance: none;
+   appearance: none;
+   margin-right: 25px;
+}
+
+.container {
+   perspective: 1000px;
+   margin-bottom: 30px;
+   min-width: 550px;
+}
+
+.seat {
+   display: inline-block;
+   background-color: #ffffff;
+   color: black;
+   height: 30px;
+   width: 39px;
+   margin: 3px;
+   border-top-left-radius: 10px;
+   border-top-right-radius: 10px;
+   padding: 5px;
+   justify-content: center;
+   font-weight: 800;
+   font-size: 16px;
+}
+.seat:not(.occupied):hover {
+  cursor: pointer;
+}
+.seat.selected {
+   background-color: #6feaf6;
+}
+
+.seat.occupied {
+   background-color: #cc0000;
+}
+
+.seat:not (.occupied ):hover {
+   cursor: pointer;
+   transform: scale(1.2);
+}
+
+.showcase .seat:not (.occupied ):hover {
+   cursor: default;
+   transform: scale(1);
+}
+
+.screen {
+   background-color: #fff;
+   height: 70px;
+   width: 100%;
+   margin: 15px 0;
+   transform: rotateX(-45deg);
+   box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
+}
+
+p.text {
+   margin: 5px 0;
+}
+
+p.text span {
+   color: #6feaf6;
+}
+
+.center {
+   text-align: center;
+}
+
+.ticket-quantity {
+   display: inline-block;
+}
+
+<!--
+paymentPage--
+>
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap")
+   ;
+
+@media screen and (max-width: 768px) {
+   /* 화면의 가로 크기가 768px 이하일 때 적용될 스타일을 작성합니다. */
+}
+
+.payments {
+   margin: 0 auto;
+   padding: 0;
+}
+
+.body2 {
+    padding-top: 50px; 
+   margin: 0 auto; 
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   height: 100vh;
+   font-family: "Lato", sans-serif;
+}
+
+.payment-container {
+   display: flex;
+   border: 0px solid #000;
+   border-radius: 10px;
+   height: 390px;
+   flex-wrap: nowrap; /* 수정: nowrap으로 설정 */
+   justify-content: space-between;
+   /* 외부 그림자 */
+   box-shadow: 2px 2px 4px 5px gray;
+}
+
+.center {
+   text-align: center;
+}
+
+.custom-table {
+   border-collapse: collapse;
+   width: 1000px;
+   margin-bottom: 20px;
+}
+
+.custom-table th, .custom-table td {
+   padding: 10px;
+   text-align: left;
+   border-bottom: 1px solid #ddd;
+}
+
+.custom-table th {
+   background-color: #f2f2f2;
+   font-weight: bold;
+}
+
+.custom-table .center {
+   text-align: center;
+}
+
+.poster-cell {
+   width: 200px;
+}
+
+.checkbox-table {
+   width: 1000px;
+   margin-bottom: 20px;
+}
+
+.checkbox-table td {
+   padding: 5px;
+   vertical-align: middle;
+}
+
+.button-container {
+   margin-top: 20px;
+}
+
+.button-container button {
+   padding: 10px 20px;
+   margin-right: 10px;
+}
+
+.custom-button {
+   display: inline-block;
+   padding: 10px 20px;
+   background-color: #503396;
+   color: white;
+   border: none;
+   border-radius: 15px;
+   text-align: center;
+   text-decoration: none;
+   font-size: 16px;
+   cursor: pointer;
+   transition: background-color 0.3s;
+}
+
+.custom-button:hover {
+   background-color: #452d7a;
+}
+
+.custom-button:active {
+   background-color: #3e296c;
+}

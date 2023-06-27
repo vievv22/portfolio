@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="PosterMapper">
+
+	<!-- 스틸컷용 포스터 등록 -->
+	<insert id="stillcutInsert">
+		insert into poster(numb, stillcut, movie_numb)
+		values(poster_seq.nextval, #{stillcut}, #{movie_numb})
+	</insert>
+	
+	<!-- 스틸컷 출력-->
+	<select id="stillcutView" resultType="String">
+		select stillcut from stillcut_view
+		where movie_numb=#{movie_numb}
+	</select>
+
+	<!-- 스틸컷 삭제 -->
+	<delete id="stillcutdelete">
+	    DELETE FROM poster
+	    WHERE movie_numb = #{movie_numb} AND stillcut = #{stillcut}
+	</delete>
+
+	
+</mapper>

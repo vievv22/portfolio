@@ -1,0 +1,214 @@
+@charset "UTF-8";
+
+<!-- 마이페이지 회원정보 상세 및 수정-->
+
+
+.star-rating span.star {
+   font-size: 1.5em;
+   display: inline-block;
+   position: relative;
+   color: #FAD103;
+}
+
+.star-rating span.star::before {
+   content: '\2605';
+   position: absolute;
+   opacity: 0;
+   transition: opacity 0.25s ease-in-out;
+   color: inherit;
+}
+
+.ponit-grade {
+	border-radius: 5px; background-color : #503396;
+	color: white;
+	width: 70px;
+	text-align: center;
+	background-color: #503396;
+}
+#middle {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   margin-bottom: 50px;
+
+}
+
+.table {
+   
+}
+.bar {
+  height: 25px;
+  background-color: #503396;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  flex-direction: row; /* 수평 방향으로 정렬 */
+  align-items: center; /* 수직 방향으로 가운데 정렬 */
+  justify-content: space-between; /* 수평 방향으로 아이템 간격을 동일하게 정렬 */
+  padding-left: 400px; /* 왼쪽 여백 추가 */
+}
+.flex-container {
+   display: flex;
+   border: 0px solid #000;
+   border-radius: 10px;
+   height: 330px;
+   flex-wrap: nowrap; /* 수정: nowrap으로 설정 */
+   justify-content: space-between;
+   /* 외부 그림자 */
+   box-shadow: 2px 2px 4px 5px gray;
+}
+
+.flex-item-right {
+   flex: 1;
+   border-left: 1px solid #E2E2E2;
+   padding: 10px;
+   width: 500px;
+   text-align: center;
+}
+
+.flex-item {
+   flex: 1;
+   padding: 10px;
+   width: 500px;
+}
+
+.flex-container button {
+	width: 100px;
+	height: 50px;
+	background-color: #ffffff;
+	color: #000000;
+	border: none;
+	text-align: center;
+	line-height: 50px;
+	font-size: 15px;
+	font-weight: bold;
+	cursor: pointer;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+
+
+.botton-container {
+   display: flex;
+   justify-content: center;
+   height: 100px;
+   flex-wrap: nowrap; /* 수정: nowrap으로 설정 */
+
+}
+
+.my-botton {
+   width: 120px;
+   text-align: center;
+   height: 50px;
+   background-color: #ffffff;
+   color: #000;
+   border: 1px solid #A8A8A8;
+   border-radius: 8px;
+   margin:10px;
+}
+
+.grade-container {
+   display: flex;
+   flex-wrap: nowrap; /* 수정: nowrap으로 설정 */
+   justify-content: space-between;
+}
+
+.grade {
+   font-size: 14px;
+}
+
+.line {
+   border-bottom: 1px solid #A8A8A8;
+}
+
+#Lv {
+   font-size: 20px;
+   text-align: center;
+}
+
+.container {
+   box-shadow: 2px 2px 4px 5px gray;
+   text-align: center;
+   border: 0px solid #000;
+   border-radius: 10px;
+       text-decoration: none;
+}
+
+
+@import
+	url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+.container2 * {
+	box-sizing: border-box;
+}
+
+
+
+.container2 {
+   background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px
+		rgba(0, 0, 0, 0.22);
+	position: relative;
+	overflow: hidden;
+	width: 1050px;
+	max-width: 100%;
+	min-height: 450px;
+	margin: 0 auto; /* 가운데 정렬을 추가 */
+	padding-top: 20px;
+}
+.container2 th, td {
+   width: 200px;
+   padding-top: 20px;
+}
+.container2 form {
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+}
+
+.container2 input {
+	background-color: #eee;
+	border: none;
+	padding: 8px 15px;
+	margin: 8px 0;
+	width: 100%;
+}
+	
+	
+	
+
+	
+ 
+ .container2 button {
+	border-radius: 20px;
+	border: 1px solid #503396;
+	background-color: #503396;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 15px 35px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+.container2 button:active {
+	transform: scale(0.95);
+}
+
+.container2 button:focus {
+	outline: none;
+}
+
+.container2 button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}	  

@@ -1,0 +1,29 @@
+@charset "UTF-8";
+<!-- allTicketingList -->
+
+<style>
+.container-fluid {
+  text-align: center;
+}
+
+.tableall {
+  margin: 0 auto;
+}
+
+table {
+  margin: 0 auto;
+  text-align: center;
+}
+
+th, td {
+  font-size: 18px; /* 폰트 크기 조정 */
+}
+
+textarea {
+  font-size: 16px; /* 폰트 크기 조정 */
+}
+
+.btn {
+  font-size: 16px; /* 폰트 크기 조정 */
+}
+</style>

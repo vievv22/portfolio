@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ScheduleMapper">
+
+	<!-- 작성자: 허장욱 -->
+	<!-- 관리자: 상영 일정 등록-->
+	<insert id="insertSchedule">
+		INSERT INTO schedule
+		VALUES(schedule_seq.NEXTVAL, #{s_day}, #{start_time}, #{end_time}, sysdate,
+			#{theater_numb}, #{movie_numb}, #{room_numb})
+	</insert>
+	
+	<!-- 관리자: 상영 일정 등록 시 해당날짜 일정 여부 확인 -->
+	<select id="checkSchedule" resultType="schedule">
+		SELECT DISTINCT s_day FROM schedule
+		WHERE theater_numb=#{theater_numb}
+			AND room_numb=#{room_numb}
+			AND s_day=#{s_day}
+	</select>
+	
+	<!-- 관리자: 상영 일정 조회(극장 별) -->
+	<select id="scheduleListByTheater" resultType="schedule">
+	<![CDATA[
+	SELECT * FROM (
+		SELECT row_number() OVER (ORDER BY s.numb DESC) rn,
+		s.numb numb, t.name theater_name, r.numb room_numb, m.title, s_day, start_time, end_time
+		FROM schedule s
+			JOIN room r ON s.room_numb = r.id
+			JOIN theater t ON t.numb = s.theater_numb
+			JOIN movie m ON m.numb = s.movie_numb
+		WHERE t.name=#{theater_name} AND m.title LIKE '%'||#{title}||'%'
+		ORDER BY s_day desc, start_time asc
+		) WHERE rn > (#{criteria.pageNum} - 1) * #{criteria.rowsPerPage}
+		      AND rn <= (#{criteria.pageNum} * #{criteria.rowsPerPage})
+     ]]>
+	</select>
+	
+	<!-- 관리자: 상영 일정 조회(페이징 처리) -->
+	<select id="scheduleListByTheaterCount" resultType="int">
+		SELECT count(*)
+		FROM schedule s
+		    JOIN room r ON s.room_numb = r.id
+		    JOIN theater t ON t.numb = s.theater_numb
+		    JOIN movie m ON m.numb = s.movie_numb
+		WHERE t.name=#{theater_name} AND  m.title LIKE '%'||#{title}||'%'
+	</select>
+	
+	<!-- 관리자: 상영 일정 삭제 유무 확인 -->
+	<select id="checkDeleteSchedule" resultType="int">
+		select count(*) as count from ticketing where schedule_numb=#{numb}
+	</select>
+	
+	<!-- 관리자: 상영 일정 삭제 -->
+	<delete id="deleteSchedule">
+		DELETE from schedule
+		WHERE numb=#{numb}
+	</delete>
+
+	<!-- 예매: 극장에서 상영중인 영화 목록 출력 -->
+	<select id="getMovieList" resultType="movie">
+		SELECT DISTINCT title, numb 
+		FROM movie_list 
+		WHERE theater_numb=#{theater_numb}
+	</select>
+
+	<!-- 예매: 해당 극장, 해당 일정, 해당 영화에 해당하는 상영일정 및 기타정보 출력-->
+	<select id="getScheduleList" parameterType="java.util.Map" resultType="schedule">
+		SELECT DISTINCT numb, rnumb, movie_numb, title, age, room_numb, scnt, end_time, s_day, theater_numb, start_time 
+		FROM schedule_list 
+		WHERE s_day=#{s_day} AND theater_numb=#{theater_numb} AND movie_numb=#{movie_numb}
+	</select>
+	
+	<!-- 남은 좌석 확인, 예매 좌석 수 카운트 -->
+	<select id="getEmptyCount" resultType="int">
+		SELECT sum(t.p_num) 
+		FROM ticketing t
+		JOIN schedule s ON t.schedule_numb = s.numb
+		JOIN movie m ON m.numb = t.movie_numb
+			WHERE t.cancelyn='n'
+			AND m.numb=#{mnumb}
+			AND s.numb=#{snumb}
+	</select>
+	
+	<!-- 작성자: 양리나 -->
+	<select id="getAllSchedule" resultType="schedule">
+		SELECT * FROM ticketing_info
+	</select>
+	
+	<select id="getTheaterNumb" resultType="schedule">
+		SELECT theater_numb FROM schedule WHERE numb=#{schedule_numb}
+	</select>
+</mapper>

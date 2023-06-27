@@ -1,0 +1,251 @@
+@charset "UTF-8";
+
+<!--
+scheduleList -->.schedule-table {
+	width: 100%;
+	background-color: #fff;
+	border-collapse: collapse;
+	border-radius: 5px;
+}
+
+.schedule-table th, .schedule-table td {
+	padding: 10px;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+}
+
+.schedule-table th {
+	background-color: #f7f7f7;
+	font-weight: bold;
+}
+
+.schedule-table tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+.schedule-table tr:hover {
+	background-color: #e6e6e6;
+}
+
+.delete-button {
+	padding: 5px 10px;
+	background-color: #e74c3c;
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.delete-button:hover {
+	background-color: #c0392b;
+}
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	list-style-type: none;
+	padding: 0;
+}
+
+.pagination li {
+	margin: 0 5px;
+}
+
+.pagination a {
+	display: inline-block;
+	padding: 5px 10px;
+	text-decoration: none;
+	color: #fff; /* 흰색으로 설정 */
+	background-color: #333; /* 배경색 설정 */
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	font-family: Arial, sans-serif;
+}
+
+.pagination a:hover {
+	background-color: #555;
+	color: #fff; /* 흰색으로 설정 */
+}
+
+.pagination .active {
+	background-color: #555;
+	color: #fff; /* 흰색으로 설정 */
+}
+
+.row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.form-label {
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.form-select {
+	padding: 6px 10px;
+	border-radius: 5px;
+}
+
+.form-control {
+	width: 200px;
+	border-radius: 5px;
+	padding: 6px 10px;
+}
+
+.btn-primary {
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	padding: 6px 12px;
+	cursor: pointer;
+}
+
+<!--
+scheduleInsert -->.h1 {
+	text-align: center;
+}
+
+.schedule_form {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #ffffff;
+	border: 1px solid #cccccc;
+	border-radius: 5px;
+}
+
+hr {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: 0;
+	border-top: 1px solid #cccccc;
+}
+
+.schedule_form label {
+	display: block;
+	margin-bottom: 5px;
+	color: #333333;
+	font-weight: bold;
+	text-align: center;
+}
+
+.schedule_form input[type="text"], .schedule_form input[type="date"], .schedule_form input[type="time"] {
+	width: 100%;
+	padding: 8px;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+}
+
+.schedule_form input[type="radio"] {
+	margin-right: 5px;
+}
+
+.schedule_form select {
+	width: 100%;
+	padding: 8px;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	text-align: center; /* 가운데 정렬 추가 */
+}
+
+.schedule_form button {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	margin-top: 10px;
+	background-color: #4caf50;
+	color: #ffffff;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.schedule_form .delete-button {
+	background-color:red;	
+}
+.schedule_form .delete-button:hover {
+	background-color:red;	
+}
+
+
+.schedule_form button:hover {
+	background-color: #45a049;
+}
+
+.radio-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.radio-container label {
+	margin-right: 10px;
+	text-align: center;
+}
+
+.custom-radio {
+	display: inline-block;
+	position: relative;
+	padding-left: 30px;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.custom-radio input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 20px;
+	width: 20px;
+	background-color: #eee;
+	border-radius: 50%;
+}
+
+.custom-radio input:checked ~ .checkmark {
+	background-color: #2196F3;
+}
+
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+
+.custom-radio input:checked ~ .checkmark:after {
+	display: block;
+}
+
+.custom-radio .checkmark:after {
+	top: 6px;
+	left: 6px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+#movieList, #localList, #theaterList, #roomList, #timeList {
+	margin-bottom: 10px;
+}
+
+.startTimeInput {
+	margin-bottom: 5px;
+}
+
+#addTimeButton {
+	background-color: #008cba;
+}
+
+#addTimeButton:hover {
+	background-color: #0077a3;
+}

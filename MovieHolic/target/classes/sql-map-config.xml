@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.movie.biz.dto.TheaterVO" alias="theater"></typeAlias>
+		<typeAlias type="com.movie.biz.dto.ScheduleVO" alias="schedule"></typeAlias>
+		<typeAlias type="com.movie.biz.dto.MovieVO" alias="movie"></typeAlias>
+		<typeAlias type="com.movie.biz.dto.TicketingVO" alias="ticketing"></typeAlias>
+		<typeAlias type="com.movie.biz.dto.RoomVO" alias="room"></typeAlias>
+		<typeAlias type="com.movie.biz.dto.SeatVO" alias="seat"></typeAlias>
+		<typeAlias type="com.movie.biz.dto.ReviewVO" alias="review"></typeAlias>
+		<typeAlias type="com.movie.biz.dto.PosterVO" alias="poster"></typeAlias>
+		<typeAlias type="com.movie.biz.dto.MemberVO" alias="member"/>
+		<typeAlias type="com.movie.biz.dto.AdminVO" alias="admin"/>
+		<typeAlias type="com.movie.biz.dto.QnaVO" alias="qna"/>
+		<typeAlias type="com.movie.biz.dto.NoticeVO" alias="notice"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="mappings/theater-mapping.xml" />
+		<mapper resource="mappings/schedule-mapping.xml" />
+		<mapper resource="mappings/movie-mapping.xml" />
+		<mapper resource="mappings/ticketing-mapping.xml" />
+		<mapper resource="mappings/review-mapping.xml" />
+		<mapper resource="mappings/room-mapping.xml" />
+		<mapper resource="mappings/seat-mapping.xml" />
+		<mapper resource="mappings/poster-mapping.xml" />
+		<mapper resource="mappings/member-mapping.xml"/>
+		<mapper resource="mappings/admin-mapping.xml"/>
+		<mapper resource="mappings/qna-mapping.xml"/>
+		<mapper resource="mappings/notice-mapping.xml"/>
+	</mappers>
+</configuration>

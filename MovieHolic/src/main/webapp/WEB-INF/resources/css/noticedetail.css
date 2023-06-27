@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+
+
+  article {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+.noticetitle{
+font-size: 18px;
+
+}
+  table {
+    margin: 0 auto;
+    width: 50%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+
+  th,
+  td {
+    padding: 10px;
+    border: 1px solid #ccc;
+   
+  }
+
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+
+  .submit {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  hr {
+    width: 50%;
+  }
+  .hr{
+  	width: 30%;
+  	border-top: 1px solid #ccc;
+  }
+  .noticeregdate{
+  	padding: 0  0 0 11px;
+  	font-size: 12px;
+  }
+  p {
+   width: 30%;
+  margin: 0 auto; /* 수평 가운데 정렬을 위해 좌우 마진을 auto로 설정 */
+  text-align: center; /* 텍스트를 가운데로 정렬 */
+}
+
+
+
+

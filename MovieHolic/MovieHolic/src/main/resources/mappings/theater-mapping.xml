@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="TheaterMapper">
+	<!-- 작성자: 허장욱 -->
+	<!-- 관리자: 극장 등록 -->
+	<insert id="insertTheater">
+		INSERT INTO theater(numb, name, local, address, room, seat, regdate, useyn)
+		VALUES(theater_seq.NEXTVAL, #{name}, #{local}, #{address},
+		#{room}, #{seat}, sysdate, 'y')
+	</insert>
+
+	<!-- 예매, 관리자 상영일정 등록: 극장 조회를 위한 권역 선택 -->
+	<select id="getTheaterByLocal" resultType="theater">
+		SELECT DISTINCT local 
+		FROM theater WHERE useyn='y'
+	</select>
+	
+	<!-- 예매: 해당 권역에 존재하는 극장 조회 -->	
+ 	<select id="getTheaterList" resultType="theater">
+		SELECT numb, name 
+		FROM theater 
+		WHERE local LIKE '%'||#{local}||'%'
+		AND useyn='y'
+	</select>
+	
+	<!-- 해당 극장의 정보 조회 -->
+	<select id="getTheaterDetail" resultType="theater">
+		SELECT * 
+		FROM theater 
+		WHERE numb=#{numb} 
+	</select>
+	
+	<!-- 관리자: 극장 폐장 처리 -->
+	<update id="updateTheater">
+		UPDATE theater SET useyn='n' 
+		WHERE numb=#{numb}
+	</update>
+	
+	<!-- 극장 등록시: 이름으로 해당 극장의 번호 조회 -->
+	<select id="getTheaterNumbByName" resultType="theater">
+		SELECT DISTINCT numb 
+		FROM theater 
+		WHERE name=#{name} 
+	</select>
+	
+	
+	<!-- 관리자 상영일정 등록: 해당 극장이 보유하고 있는 관 id 조회 -->
+	<select id="getRoomListByTheater" resultType="room">
+		SELECT r.id as id, r.numb as numb
+		FROM room r
+		JOIN theater t ON r.theater_numb = t.numb
+			WHERE theater_numb=#{theater_numb}
+	</select>
+	
+	<!-- 작성자: 양리나 -->
+	<select id="theaterList" resultType="theater">
+		SELECT * FROM theater ORDER BY numb
+	</select>
+	
+	<select id="theaterName" resultType="theater">
+		SELECT name FROM theater WHERE numb=#{theater_numb}
+	</select>
+</mapper>

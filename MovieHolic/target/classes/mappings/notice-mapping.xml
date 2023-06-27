@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="NoticeMapper">
+
+	
+	
+	<!-- 공지사항 상세 조회 -->
+	<select id="noticeView" resultType="notice">
+		select * from notice where numb=#{numb}
+	</select>
+	
+	<!-- 공지사항 등록 -->
+	<insert id="insertnotice">
+		insert into notice (numb, title, content)
+		values (notice_seq.NEXTVAL, #{title}, #{content})
+	</insert>
+	
+	<!-- 공지사항 삭제 -->
+	<delete id="deleteNotice">
+		DELETE FROM notice
+		WHERE numb=#{numb}
+	</delete>
+	
+	<!-- 공지사항 수정 -->
+	<update id="updateNotice">
+		UPDATE notice SET title=#{title}, content=#{content}
+		WHERE numb=#{numb}
+	</update>
+	
+
+	
+	<!-- 총 공지사항 목록의 개수 조회 -->
+	<select id="countNoticeList" parameterType="String" resultType="int">
+		select count(*) from notice where title like '%'||#{name}||'%'
+	</select>
+	
+	<!-- 공지사항 목록 조회 -->
+	<select id="listNotice" parameterType="String" resultType="notice">
+		SELECT *
+		FROM notice WHERE title LIKE '%'||#{name}||'%'
+		ORDER BY regdate desc
+	</select>
+	
+	<!-- 공지사항 목록 admin 조회 -->
+	<select id="listNoticeAdmin" resultType="notice">
+		SELECT * FROM notice ORDER BY regdate desc
+	</select>
+	
+
+	<!-- 페이지별 공지사항 목록 조회 -->
+	<select id="listNoticeWithPaging" parameterType="hashMap" resultType="notice">
+	    <![CDATA[
+	    select rn, numb, title, content, regdate from 
+		    (select row_number() over (ORDER BY regdate desc) rn, numb, title, content, regdate from notice 
+		    where title like '%'||#{name}||'%')
+			    where rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
+			    and rn <= (#{criteria.pageNum} * #{criteria.rowsPerPage})
+				
+	    ]]>
+	</select>
+	
+
+
+
+	
+	<!-- 고객센터내에 공지사항 최신 5개 조회 -->
+	<select id="listNotice5"  resultType="notice">
+		 SELECT * FROM top_5_notices
+	</select>
+	
+
+
+
+
+
+
+
+
+
+</mapper>

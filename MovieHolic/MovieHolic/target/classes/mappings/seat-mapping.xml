@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="SeatMapper">
+	<!-- 작성자: 허장욱 -->
+	<!-- 좌석 정보 등록 -->
+	<insert id="insertSeat">
+		INSERT INTO seat 
+		VALUES(seat_seq.NEXTVAL, #{name}, #{room_id})
+	</insert>
+
+	<!-- 작성자: 양리나 -->
+	<select id="getSeatList" resultType="seat">
+		SELECT name FROM seat WHERE room_id=#{room}
+	</select>
+</mapper>

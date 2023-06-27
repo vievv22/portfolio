@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+<!-- ticketingDetail -->
+/* 전체 페이지 스타일 */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+
+.top-bar h1 {
+  margin: 0;
+}
+
+/* 티켓 정보 테이블 스타일 */
+.ticket-table {
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #727272;
+}
+
+.ticket-table th,
+.ticket-table td {
+  padding: 10px;
+  text-align: left;
+
+}
+
+.ticket-table th {
+  background-color: #727272;
+}
+
+/* 영화 포스터 스타일 */
+.poster-cell {
+  width: 200px;
+  height: 300px;
+  vertical-align: top;
+  padding-right: 20px;
+  text-align: center;
+}
+
+.poster-image {
+  width: 200px;
+  height: 300px;
+  object-fit: contain;
+}
+
+/* 예매 상세 정보 테이블 스타일 */
+.details-table {
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+
+}
+
+.details-table th,
+.details-table td {
+  padding: 10px;
+  text-align: left;
+
+}
+
+.details-table th {
+  background-color: #727272;
+}
+
+.details-label{
+	width:200px;
+	border-bottom:1px solid #727272;
+}
+
+/* 링크 스타일 */
+.box-link {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 8px 16px;
+  background-color: #503396;
+  color:white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.box-link:hover {
+  background-color: #e0e0e0;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+  .poster-cell {
+    width: 200px;
+    height: 300px;
+    text-align: center;
+    padding-right: 0;
+  }
+}
+.bar {
+  height: 25px;
+  background-color: #503396;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  flex-direction: row; /* 수평 방향으로 정렬 */
+  align-items: center; /* 수직 방향으로 가운데 정렬 */
+  justify-content: space-between; /* 수평 방향으로 아이템 간격을 동일하게 정렬 */
+  padding-left: 400px; /* 왼쪽 여백 추가 */
+}

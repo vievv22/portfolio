@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+<!-- 마이페이지 회원정보 수정-->
+@import
+	url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+* {
+	box-sizing: border-box;
+}
+
+form {
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+}
+input {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+}
+
+.container {
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px
+		rgba(0, 0, 0, 0.22);
+	position: relative;
+	overflow: hidden;
+	width: 700px;
+	max-width: 100%;
+	min-height: 600px;
+	margin: 0 auto; /* 가운데 정렬을 추가 */
+	padding-top: 20px;
+}
+.container2 {
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px
+		rgba(0, 0, 0, 0.22);
+	position: relative;
+	overflow: hidden;
+	width: 700px;
+	max-width: 100%;
+	margin: 0 auto; /* 가운데 정렬을 추가 */
+	padding-top: 20px;
+}
+
+.bar {
+  height: 25px;
+  background-color: #503396;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  flex-direction: row; /* 수평 방향으로 정렬 */
+  align-items: center; /* 수직 방향으로 가운데 정렬 */
+  justify-content: space-between; /* 수평 방향으로 아이템 간격을 동일하게 정렬 */
+  padding-left: 400px; /* 왼쪽 여백 추가 */
+}
+
+button {
+	border-radius: 20px;
+	border: 1px solid #503396;
+	background-color: #503396;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+button:active {
+	transform: scale(0.95);
+}
+
+button:focus {
+	outline: none;
+}
+
+button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+  
+.tel-container {
+  display: flex;
+  align-items: center;
+}
+
+.tel-container input {
+   width: 80px;
+}
+
+span{
+	padding: 0px 50px 0px 0px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

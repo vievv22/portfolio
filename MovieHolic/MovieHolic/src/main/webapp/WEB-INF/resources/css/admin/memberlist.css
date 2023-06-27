@@ -1,0 +1,80 @@
+@charset "UTF-8";
+<!-- allTicketingList -->
+ body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+    }
+
+    .schedule-table {
+      width: 100%;
+      background-color: #fff;
+      border-collapse: collapse;
+      border-radius: 5px;
+    }
+
+    .schedule-table th,
+    .schedule-table td {
+      padding: 10px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .schedule-table th {
+      background-color: #f7f7f7;
+      font-weight: bold;
+    }
+
+    .schedule-table tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    .schedule-table tr:hover {
+      background-color: #e6e6e6;
+    }
+
+    .delete-button {
+      padding: 5px 10px;
+      background-color: #e74c3c;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .delete-button:hover {
+      background-color: #c0392b;
+    }
+    
+    	.pagination {
+		display: flex;
+		justify-content: center;
+		list-style-type: none;
+		padding: 0;
+	}
+
+	.pagination li {
+		margin: 0 5px;
+	}
+
+	.pagination a {
+		display: inline-block;
+		padding: 5px 10px;
+		text-decoration: none;
+		color: #fff; /* 흰색으로 설정 */
+		background-color: #333; /* 배경색 설정 */
+		border: 1px solid #ccc;
+		border-radius: 3px;
+		font-family: Arial, sans-serif;
+	}
+
+	.pagination a:hover {
+		background-color: #555;
+		color: #fff; /* 흰색으로 설정 */
+	}
+
+	.pagination .active {
+		background-color: #555;
+		color: #fff; /* 흰색으로 설정 */
+	}
+	

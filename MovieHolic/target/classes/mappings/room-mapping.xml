@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="RoomMapper">
+	<!-- 작성자: 허장욱 -->
+	<!-- 관 정보 등록 -->
+	<insert id="insertRoom">
+		INSERT INTO room 
+		VALUES(room_seq.NEXTVAL, #{numb}, #{cnt}, #{theater_numb})
+	</insert>
+	
+	<select id="getRoomIdByTheater" resultType="int">
+		SELECT id 
+		FROM room 
+		WHERE theater_numb=#{theater_numb} ORDER BY ID
+	</select>
+	
+	<!-- 극장에 속한 관 정보 불러오기 -->
+	<select id="getRoomListByTheater" resultType="room">
+		SELECT id, r.numb numb, cnt 
+		FROM theater t
+		JOIN room r ON r.theater_numb = t.numb
+		    WHERE t.numb = #{t_numb} 
+		    ORDER BY numb desc
+	</select>
+	
+	<!-- 작성자: 양리나 -->
+	<select id="getSeatCount" resultType="seat">
+		SELECT * FROM room WHERE theater_numb=#{theater} AND numb2=#{room}
+	</select>
+</mapper>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="MemberMapper">
+
+
+	<!--  회원 id를 조건으로 회원 조회 -->
+	<select id="getMember" resultType="member">
+		select * from users where id=#{id}
+	</select>
+	
+	<!-- 중복확인용:회원 존재 여부 조회-->
+	<select id="confirmID" resultType="String">
+		select pwd from users where id=#{id}
+	</select>
+
+	<!-- 회원 존재 여부 조회-->
+	<select id="checkID" resultType="String">
+		select useyn from users where id=#{id}
+	</select>
+	
+	<!--  회원 등록 -->
+	<insert id="insertMember" >
+		insert into users (id, pwd, name, tel, birth, point, email)
+		values (#{id}, #{pwd}, #{name}, #{tel}, #{birth}, #{point}, #{email})
+	</insert>
+	
+
+	<!-- 이메일 체크 -->
+	<select id="checkEmail" resultType="String">
+		SELECT email FROM users WHERE email=#{email}
+	</select>
+
+	<!-- 이름과 이메일로 아이디 찾기  -->
+	<select id="selectIdByNameEmail" resultType="String">
+		SELECT id FROM users WHERE name=#{name} AND email=#{email} AND useyn='y'
+	</select>
+
+	<!-- 아이디, 이름, 이메일로 비밀번호 찾기  -->
+	<select id="selectPwdByIdNameEmail" resultType="String">
+		SELECT pwd FROM users WHERE id=#{id} AND name=#{name} AND email=#{email} AND useyn='y'
+	</select>
+
+	<!-- 새비밀번호 변경 -->
+	<update id="changePwd">
+		UPDATE users SET pwd=#{pwd} WHERE id=#{id} AND useyn='y'
+	</update>
+	
+	
+	
+	
+	<!-- 회원정보 수정 -->
+	<update id="updateMember">
+		UPDATE users SET tel=#{tel}, email=#{email} WHERE id=#{id} 
+	</update>
+	
+	<!-- 비밀번호 수정 -->
+	<update id="updatePwdMember">
+		UPDATE users SET pwd=#{pwd} WHERE id=#{id} 
+	</update>
+	
+		
+	<!-- 회원탈퇴  'n'으로 수정-->
+	<update id="deleteMember">
+		UPDATE users SET useyn='n' WHERE id=#{id} 
+	</update>
+	
+	
+	<!-- 관리자페이지 회원 전체 목록 조회 
+	<select id="listMember"  parameterType="hashMap" resultType="member">
+		SELECT * FROM users ORDER BY useyn desc, regdate desc
+	</select>
+	
+-->
+	
+	<!-- 총 회원 목록의 개수 조회 -->
+	<select id="countMemberList" parameterType="String" resultType="int">
+		select count(*) from users where name like '%'||#{name}||'%'
+	</select>
+	
+	<!-- 회원 목록 조회 -->
+	<select id="listMember" parameterType="String" resultType="member">
+		SELECT *
+		FROM users WHERE name LIKE '%'||#{name}||'%'
+		ORDER BY regdate desc
+	</select>
+	
+	
+	
+
+	<!-- 페이지별 회원 목록 조회 -->
+	<select id="listMemberWithPaging" parameterType="hashMap" resultType="member">
+	    <![CDATA[
+	    select rn, id, name, tel, birth, email, point, regdate, useyn from 
+		    (select row_number() over (ORDER BY regdate desc, useyn desc) rn, id, name, tel, birth, email, point, regdate, useyn from users 
+		    where name like '%'||#{name}||'%')
+			    where rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
+			    and rn <= (#{criteria.pageNum} * #{criteria.rowsPerPage})
+				
+	    ]]>
+	</select>
+	
+	
+	
+	<!-- 예매 완료 시 포인트 적립 -->
+	<update id="updatePoint">
+		UPDATE users SET point=point+#{point} WHERE id=#{id}
+	</update>
+	
+	<!-- 관리자 대시보드: 총 회원 수 조회 -->
+	<select id="getTotalUserCount" resultType="member">
+		SELECT COUNT(*) totalUsers
+		FROM users
+		WHERE useyn='y'
+	</select>
+</mapper>
